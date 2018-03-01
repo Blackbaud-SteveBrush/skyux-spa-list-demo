@@ -14,16 +14,15 @@ export interface Person {
 
 @Component({
   selector: 'list-demo',
-  templateUrl: './list-demo.component.html',
-  styleUrls: ['./list-demo.component.scss']
+  templateUrl: './list-demo.component.html'
 })
 export class ListDemoComponent {
   public people = new BehaviorSubject<Person[]>([
     { id: 1, name: { first: 'Susan', last: 'Smith' } },
     { id: 2, name: { first: 'Dave', last: 'Peters' } },
     { id: 3, name: { first: 'Chuck', last: 'Norris' } },
-    { id: 4, name: { first: 'Susan', last: 'Hendricks' } },
-    { id: 5, name: { first: 'Susan', last: 'Jones' } }
+    { id: 4, name: { first: 'Amanda', last: 'Hendricks' } },
+    { id: 5, name: { first: 'Tiffany', last: 'Jones' } }
   ]);
 
   public changeData() {

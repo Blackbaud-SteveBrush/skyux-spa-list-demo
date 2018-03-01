@@ -1,89 +1,83 @@
-<div class="list-demo-container">
-  <h1 class="sky-page-heading">
-    Users
-  </h1>
+<sky-list [data]="people">
+  <sky-list-toolbar>
 
-  <sky-list [data]="people">
-    <sky-list-toolbar>
+    <!-- CUSTOM CONTENT AREAS -->
+    <sky-list-toolbar-item
+      location="left">
+      <ng-template>
+        (left)
+      </ng-template>
+    </sky-list-toolbar-item>
+    <sky-list-toolbar-item
+      location="center">
+      <ng-template>
+        (center)
+      </ng-template>
+    </sky-list-toolbar-item>
+    <sky-list-toolbar-item
+      location="right">
+      <ng-template>
+        (right)
+      </ng-template>
+    </sky-list-toolbar-item>
 
-      <!-- CUSTOM CONTENT AREAS -->
-      <sky-list-toolbar-item
-        location="left">
-        <ng-template>
-          (left)
-        </ng-template>
-      </sky-list-toolbar-item>
-      <sky-list-toolbar-item
-        location="center">
-        <ng-template>
-          (center)
-        </ng-template>
-      </sky-list-toolbar-item>
-      <sky-list-toolbar-item
-        location="right">
-        <ng-template>
-          (right)
-        </ng-template>
-      </sky-list-toolbar-item>
+    <!-- DROPDOWN -->
+    <sky-list-secondary-actions>
+      <sky-list-secondary-action>
+        <button
+          type="button"
+          class="sky-btn sky-btn-default">
+          Dropdown item 1
+        </button>
+      </sky-list-secondary-action>
 
-      <!-- DROPDOWN -->
-      <sky-list-secondary-actions>
-        <sky-list-secondary-action>
-          <button
-            type="button"
-            class="sky-btn sky-btn-default">
-            Dropdown item 1
-          </button>
-        </sky-list-secondary-action>
+      <!-- COLUMN SELECTOR -->
+      <sky-list-column-selector-action
+        [gridView]="myGrid">
+      </sky-list-column-selector-action>
+    </sky-list-secondary-actions>
 
-        <!-- COLUMN SELECTOR -->
-        <sky-list-column-selector-action
-          [gridView]="myGrid">
-        </sky-list-column-selector-action>
-      </sky-list-secondary-actions>
+    <!-- SORT -->
+    <sky-list-toolbar-sort
+      label="First name"
+      field="name.first">
+    </sky-list-toolbar-sort>
+    <sky-list-toolbar-sort
+      label="Last name"
+      field="name.last">
+    </sky-list-toolbar-sort>
+  </sky-list-toolbar>
 
-      <!-- SORT -->
-      <sky-list-toolbar-sort
-        label="First name"
-        field="name.first">
-      </sky-list-toolbar-sort>
-      <sky-list-toolbar-sort
-        label="Last name"
-        field="name.last">
-      </sky-list-toolbar-sort>
-    </sky-list-toolbar>
+  <!-- VIEW -->
+  <sky-list-view-grid #myGrid>
+    <sky-grid-column
+      field="id"
+      heading="ID">
+    </sky-grid-column>
+    <sky-grid-column
+      field="name.first"
+      heading="Name"
+      [template]="customNameTemplate">
+    </sky-grid-column>
+  </sky-list-view-grid>
 
-    <!-- VIEW -->
-    <sky-list-view-grid #myGrid>
-      <sky-grid-column
-        field="id"
-        heading="ID">
-      </sky-grid-column>
-      <sky-grid-column
-        field="name.first"
-        heading="Name"
-        [template]="customNameTemplate">
-      </sky-grid-column>
-    </sky-list-view-grid>
+  <!-- PAGING -->
+  <sky-list-paging
+    pageSize="1">
+  </sky-list-paging>
+</sky-list>
 
-    <!-- PAGING -->
-    <sky-list-paging
-      pageSize="1">
-    </sky-list-paging>
-  </sky-list>
+<p>
+  <button
+    type="button"
+    class="sky-btn sky-btn-primary"
+    (click)="changeData()">
+    Change data
+  </button>
+</p>
 
-  <p>
-    <button
-      type="button"
-      class="sky-btn sky-btn-primary"
-      (click)="changeData()">
-      Change data
-    </button>
-  </p>
-
-  <ng-template
-    let-row="item"
-    #customNameTemplate>
-    {{ row.data.name.first }} {{ row.data.name.last }}
-  </ng-template>
-</div>
+<ng-template
+  let-row="item"
+  #customNameTemplate>
+  {{ row.data.name.first }} {{ row.data.name.last }}
+</ng-template>
