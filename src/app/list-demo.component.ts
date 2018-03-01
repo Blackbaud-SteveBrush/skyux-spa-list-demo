@@ -2,14 +2,9 @@ import {
   Component
 } from '@angular/core';
 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
-export interface Person {
+export interface User {
   id: number;
-  name: {
-    first: string;
-    last: string;
-  };
+  name: string;
 }
 
 @Component({
@@ -17,17 +12,11 @@ export interface Person {
   templateUrl: './list-demo.component.html'
 })
 export class ListDemoComponent {
-  public people = new BehaviorSubject<Person[]>([
-    { id: 1, name: { first: 'Susan', last: 'Smith' } },
-    { id: 2, name: { first: 'Dave', last: 'Peters' } },
-    { id: 3, name: { first: 'Chuck', last: 'Norris' } },
-    { id: 4, name: { first: 'Amanda', last: 'Hendricks' } },
-    { id: 5, name: { first: 'Tiffany', last: 'Jones' } }
-  ]);
-
-  public changeData() {
-    this.people.next([
-      { id: 2, name: { first: 'Dave', last: 'Peters' } }
-    ]);
-  }
+  public users: User[] = [
+    { id: 1, name: 'Susan' },
+    { id: 2, name: 'Dave' },
+    { id: 3, name: 'Chuck' },
+    { id: 4, name: 'Amanda' },
+    { id: 5, name: 'Tiffany' }
+  ];
 }
