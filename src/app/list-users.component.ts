@@ -8,10 +8,10 @@ export interface User {
 }
 
 @Component({
-  selector: 'list-demo',
-  templateUrl: './list-demo.component.html'
+  selector: 'list-users',
+  templateUrl: './list-users.component.html'
 })
-export class ListDemoComponent {
+export class ListUsersComponent {
   public users: User[] = [
     { id: 1, name: 'Susan' },
     { id: 2, name: 'Dave' },
